@@ -102,7 +102,7 @@ def hammingCorrection(data, size):
 
     n = noOfParityBitsInCode(len(second_byte_array))
     i = 0
-    list1 = list(second_byte_array)
+    list1 = second_byte_array
     errorBitIndex = 0
 
     while i < n:
