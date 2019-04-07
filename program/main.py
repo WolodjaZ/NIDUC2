@@ -2,10 +2,11 @@ from get_binary import get_binary
 from encode import endcode as en
 from noise import nois
 from koder_and_encoder import kode, enkode
+from hamming import hammingCorrection, hammingCode
 
 def main():
   # wybór metody kodowania
-  koding_algorithm = input("Podaj '1' jeśli ma być trójkowy algorytm albo podaj '0' jeśli ma być ___")
+  koding_algorithm = input("Podaj '1' jeśli ma być trójkowy algorytm albo podaj '0' jeśli ma być algorytm hamminga ")
   while koding_algorithm.strip() != '0' and koding_algorithm.strip() != '1':
     koding_algorithm = input("Podaj ponownie")
 
@@ -37,7 +38,7 @@ def main():
   size = int(input("podaj co ile ma być pakowany sygnał "))
 
   if koding_algorithm.strip() == '0':
-    pass # miejsce na kodowanie drugim algorytmem
+    byte = hammingCode(byte, size)# miejsce na kodowanie drugim algorytmem
   elif koding_algorithm.strip() == '1':
     byte = kode(byte, size)
   else:
@@ -50,7 +51,7 @@ def main():
   
   # odkodujemy nasz sygnał
   if koding_algorithm.strip() == '0':
-    pass # miejsce na odkowanie drugim algorytmem
+    byte = hammingCorrection(byte, size) # miejsce na odkowanie drugim algorytmem
   elif koding_algorithm.strip() == '1':
     byte = enkode(byte, size)
 

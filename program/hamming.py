@@ -42,7 +42,7 @@ def appendParityBits(data):
 
 # funkcja genereująca bity parzystości według kodu Hamminga
 
-def hammingCode(data):
+def hammingCode(data, size):
     n = noOfParityBits(len(data))
     list1 = appendParityBits(data)
     i = 0
@@ -75,16 +75,34 @@ def hammingCode(data):
 
         i += 1
 
-    return list1
+    pises_of_bytes = []
+    count_high = 0
+    count_lower = 0
+    for _ in list1:
+        if size == (count_high-count_lower):
+            pises_of_bytes.append(list1[count_lower:count_high])
+            count_lower = count_high
+
+        count_high  += 1
+    if count_lower != count_high: 
+        pises_of_bytes.append(list1[count_lower:count_high])
+
+
+    return pises_of_bytes
 
 
 # funkcja wykrywająca i naprawiająca błedy w kodzie Hamminga
 
-def hammingCorrection(data):
-    n = noOfParityBitsInCode(len(data))
+def hammingCorrection(data, size):
+    second_byte_array = []
+    for bytess in data:
+        for byte in bytess:
+            second_byte_array.append(int(byte))
+
+
+    n = noOfParityBitsInCode(len(second_byte_array))
     i = 0
-    list1 = list(data)
-    print(list1)
+    list1 = list(second_byte_array)
     errorBitIndex = 0
 
     while i < n:
