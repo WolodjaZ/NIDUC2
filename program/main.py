@@ -45,10 +45,9 @@ def main():
     print("Wystąpił bład przeraszamy")
     return
 
-  # podajemy co jaki bit ma być nałożony szum i modyfikujemy nasz sygnał
-  trzeci = int(input("podaj co jaki bit ma być szum "))
+  # szum i modyfikujemy nasz sygnał
   przed_szumem = byte
-  byte = nois(byte, int (trzeci))
+  byte = nois(byte)
   liczba_bledow = difference(przed_szumem, byte)
   
   # odkodujemy nasz sygnał
