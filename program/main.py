@@ -47,7 +47,9 @@ def main():
 
   # podajemy co jaki bit ma być nałożony szum i modyfikujemy nasz sygnał
   trzeci = int(input("podaj co jaki bit ma być szum "))
+  przed_szumem = byte
   byte = nois(byte, int (trzeci))
+  liczba_bledow = difference(przed_szumem, byte)
   
   # odkodujemy nasz sygnał
   if koding_algorithm.strip() == '0':
@@ -60,11 +62,15 @@ def main():
   print('Uncoded',byte)
   print('Długość pierwotnego', len(byte_copy_first))
   print('Długosć zmienionego', len(byte))
-  print("Tyle liczb z sie zmieniło: ",difference(byte_copy_first ,byte))
+  print("Tyle liczb zmienionych przed naprawą: ", liczba_bledow)
+  print("Tyle liczb zmienionyh po naprawie: ",difference(byte_copy_first ,byte))
+  print("Tyle liczb naprawił: ", liczba_bledow - difference(byte_copy_first ,byte))
 
   # prubujemy uzyskać zdjecie albo słowo z naszego ciągu bitów
-  cos = en(n, byte);
-  ansver = cos.return_string()
+  #cos = en(n, byte);
+  #ansver = cos.return_string()
+
+  #print(ansver)
 
 
 # metoda która zwraca różnice bitów dwóch tablic i wypisuje ile występuje tych różnic
