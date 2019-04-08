@@ -112,7 +112,7 @@ def hammingCorrection(data, size):
         total = 0
 
         while j*parityBitIndex - 1 < len(list1):
-            if j*parityBitIndex - 1 == len(list1):
+            if j*parityBitIndex - 1 == len(list1) - 1:
                 lower_index = j * parityBitIndex - 1
                 temp = list1[int(lower_index):len(list1)]
 
@@ -120,7 +120,7 @@ def hammingCorrection(data, size):
                 lower_index = j * parityBitIndex - 1
                 temp = list1[int(lower_index):len(list1)]
 
-            elif (j+1) * parityBitIndex - 1 <= len(list1) - 1:
+            elif (j+1) * parityBitIndex - 1 < len(list1) - 1:
                 lower_index = (j*parityBitIndex) - 1
                 upper_index = (j+1) * parityBitIndex - 1
                 temp = list1[int(lower_index):int(upper_index)]
@@ -130,20 +130,18 @@ def hammingCorrection(data, size):
             j += 2
 
         if total % 2 > 0:
-            print("Error bit index: ", parityBitIndex)
+            #print("Error bit index: ", parityBitIndex)
             errorBitIndex += parityBitIndex
 
         i += 1
 
-    if errorBitIndex >= 1:
-        print("Error in ",errorBitIndex," bit after correction data is ")
+    if errorBitIndex >= 1 and errorBitIndex <= len(list1)-1:
+        #print("Error in ",errorBitIndex," bit after correction data is ")
         if list1[int(errorBitIndex-1)] == '0' or list1[int(errorBitIndex-1)] == 0:
             list1[int(errorBitIndex-1)] = 1
 
         else:
             list1[int(errorBitIndex-1)] = 0
-    else:
-        print("No error")
 
 
     list2 = list()
