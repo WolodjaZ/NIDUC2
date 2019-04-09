@@ -2,9 +2,9 @@ import random
 
 def nois(bytes):
 	bite = []
-	for byte_first in bytes:
+	for packet in bytes:
 		byte = []
-		for b in byte_first:
+		for b in packet:
 			often = random.randint(0,100)
 			if often > 90:
 				data = random.randint(0,1)
