@@ -42,7 +42,7 @@ def main():
   elif koding_algorithm.strip() == '1':
     byte = kode(byte, size)
   else:
-    print("Wystąpił bład przeraszamy")
+    print("Wystąpił bład przepraszamy")
     return
 
   # szum i modyfikujemy nasz sygnał
@@ -52,7 +52,12 @@ def main():
   
   # odkodujemy nasz sygnał
   if koding_algorithm.strip() == '0':
-    byte = hammingCorrection(byte, size) # miejsce na odkowanie drugim algorytmem
+        if liczba_bledow <= 1:
+            byte = hammingCorrection(byte, size) # miejsce na odkowanie drugim algorytmem
+        else:
+            print("Wykryto więcej niż jeden błąd.")
+            return
+
   elif koding_algorithm.strip() == '1':
     byte = enkode(byte, size)
 
