@@ -62,7 +62,7 @@ def hammingCode(data, size):
                 lower_index = j * parityBitIndex - 1
                 temp = list1[int(lower_index):len(list1)]
 
-            elif (j+1) * parityBitIndex - 1 < len(list1) - 1:
+            elif (j+1) * parityBitIndex - 1 < len(list1):
                 lower_index = (j*parityBitIndex) - 1
                 upper_index = (j+1) * parityBitIndex - 1
                 temp = list1[int(lower_index):int(upper_index)]
@@ -102,6 +102,7 @@ def hammingCorrection(data, size):
 
     n = noOfParityBitsInCode(len(second_byte_array))
     i = 0
+    original = second_byte_array
     list1 = second_byte_array
     errorBitIndex = 0
 
@@ -120,7 +121,7 @@ def hammingCorrection(data, size):
                 lower_index = j * parityBitIndex - 1
                 temp = list1[int(lower_index):len(list1)]
 
-            elif (j+1) * parityBitIndex - 1 < len(list1) - 1:
+            elif (j+1) * parityBitIndex - 1 < len(list1):
                 lower_index = (j*parityBitIndex) - 1
                 upper_index = (j+1) * parityBitIndex - 1
                 temp = list1[int(lower_index):int(upper_index)]
@@ -142,6 +143,7 @@ def hammingCorrection(data, size):
 
         else:
             list1[int(errorBitIndex-1)] = 0
+
 
 
     list2 = list()
