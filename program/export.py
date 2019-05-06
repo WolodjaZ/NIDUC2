@@ -8,6 +8,7 @@ from noise import nois
 from hamming import hammingCorrection, hammingCode
 
 def randomString(stringLength=16):
+    """Creats random string"""
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(stringLength))
 
@@ -22,12 +23,12 @@ while value <= "0" or not value.isdigit():
 i = int(value)
 goodCount = 0
 
-with open('export.csv', 'w', newline='') as f:
+with open('export.csv', 'w', newline='') as f:     #creats file
     writer = csv.writer(f)
 
     writer.writerow(['noOfPackets', 'good', 'broken'])
 
-    for y in range(i):
+    for y in range(i):  # Count of how much result we need to write
         for x in range(1000):                       # default noOfPackets=1000
             
             packet = randomString()                 # default string lenght=16, 
@@ -51,5 +52,5 @@ with open('export.csv', 'w', newline='') as f:
             if difference(packetBin, decoded) == 0:
                 goodCount += 1
 
-        writer.writerow([1000, str(goodCount), str(1000 - goodCount)])
+        writer.writerow([1000, str(goodCount), str(1000 - goodCount)]) # writs outcome
         goodCount = 0

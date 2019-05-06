@@ -38,7 +38,7 @@ def main():
   size = int(input("podaj co ile ma być pakowany sygnał "))
 
   if koding_algorithm.strip() == '0':
-    byte = hammingCode(byte, size)# miejsce na kodowanie drugim algorytmem
+    byte = hammingCode(byte, size)
   elif koding_algorithm.strip() == '1':
     byte = kode(byte, size)
   else:
@@ -79,13 +79,16 @@ def main():
 
 # metoda która zwraca różnice bitów dwóch tablic i wypisuje ile występuje tych różnic
 def difference(first, second):
+  """Counts difference between two lists"""
 	count = 0
+  # if first list is bigger
 	if len(first) > len(second):
 		for i in range(len(second)):
 			if first[i] != second[i]:
 				count += 1
 
 		count += len(first) - len(second)
+  # if second is bigger
 	elif len(first) < len(second):
 		for i in range(len(first)):
 			if first[i] != second[i]:
@@ -93,6 +96,7 @@ def difference(first, second):
 
 		count += len(second) - len(first)
 
+  # if size of them is the same
 	else:
 		for i in range(len(first)):
 			if first[i] != second[i]:
