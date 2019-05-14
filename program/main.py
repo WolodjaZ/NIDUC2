@@ -8,7 +8,7 @@ def main():
   # wybór metody kodowania
   koding_algorithm = input("Podaj '1' jeśli ma być trójkowy algorytm albo podaj '0' jeśli ma być algorytm hamminga ")
   while koding_algorithm.strip() != '0' and koding_algorithm.strip() != '1':
-    koding_algorithm = input("Podaj ponownie")
+    koding_algorithm = input("Podaj ponownie ")
 
   # wybór co ma być podawane do kodowania
   n = input("Podaj czy chcesz wersje z obrazkiem '0' czy ze stringiem '1' ")
@@ -80,29 +80,29 @@ def main():
 # metoda która zwraca różnice bitów dwóch tablic i wypisuje ile występuje tych różnic
 def difference(first, second):
   """Counts difference between two lists"""
-	count = 0
+  count = 0
   # if first list is bigger
-	if len(first) > len(second):
-		for i in range(len(second)):
-			if first[i] != second[i]:
-				count += 1
+  if len(first) > len(second):
+    for i in range(len(second)):
+      if first[i] != second[i]:
+        count += 1
 
-		count += len(first) - len(second)
+    count += len(first) - len(second)
   # if second is bigger
-	elif len(first) < len(second):
-		for i in range(len(first)):
-			if first[i] != second[i]:
-				count += 1
+  elif len(first) < len(second):
+    for i in range(len(first)):
+      if first[i] != second[i]:
+        count += 1
 
-		count += len(second) - len(first)
+    count += len(second) - len(first)
 
   # if size of them is the same
-	else:
-		for i in range(len(first)):
-			if first[i] != second[i]:
-				count += 1
+  else:
+    for i in range(len(first)):
+      if first[i] != second[i]:
+        count += 1
 
-	return count
+  return count
 
   
 if __name__== "__main__":
